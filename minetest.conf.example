@@ -56,8 +56,8 @@
 
 #    The time in seconds it takes between repeated node placements when holding
 #    the place button.
-#    type: float min: 0.16 max: 2
-# repeat_place_time = 0.25
+#    type: float min: 0.0 max: 2
+# repeat_place_time = 0.001
 
 #    The minimum time in seconds it takes between digging nodes when holding
 #    the dig button.

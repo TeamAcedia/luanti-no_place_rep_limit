@@ -25,8 +25,6 @@
 #include <optional>
 #include <cassert>
 
-namespace irr
-{
 namespace scene
 {
 
@@ -173,7 +171,8 @@ void CAnimatedMeshSceneNode::OnAnimate(u32 timeMs)
 	}
 
 	// set CurrentFrameNr
-	buildFrameNr(timeMs - LastTimeMs);
+	const u32 dtimeMs = timeMs - LastTimeMs;
+	buildFrameNr(dtimeMs);
 	LastTimeMs = timeMs;
 
 	// This needs to be done on animate, which is called recursively *before*
@@ -185,7 +184,7 @@ void CAnimatedMeshSceneNode::OnAnimate(u32 timeMs)
 	copyOldTransforms();
 
 	if (OnAnimateCallback)
-		OnAnimateCallback(timeMs / 1000.0f);
+		OnAnimateCallback(dtimeMs / 1000.0f);
 
 	IAnimatedMeshSceneNode::OnAnimate(timeMs);
 
@@ -680,4 +679,3 @@ ISceneNode *CAnimatedMeshSceneNode::clone(ISceneNode *newParent, ISceneManager *
 }
 
 } // end namespace scene
-} // end namespace irr
